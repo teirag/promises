@@ -40,7 +40,7 @@ exports.readDir = function(directoryPath)
 			}
 			else
 			{
-				resolve(data);
+				resolve(files);
 			}		
 		});
 	});
