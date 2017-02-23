@@ -57,7 +57,7 @@ exports.readDirFiles = function(directoryPath)
 				my_arr.push(exports.readFile(
 					exports.resolvedPath(directoryPath, fileNames[i])));
 			}
-			return Promise.all(arr); //returns a promise
+			return Promise.all(my_arr); //returns a promise
 		});
 
 	/*return new Promise(function(resolve, reject)
