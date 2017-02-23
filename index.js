@@ -48,7 +48,19 @@ exports.readDir = function(directoryPath)
 
 exports.readDirFiles = function(directoryPath)
 {
-	return new Promise(function(resolve, reject)
+	return exports.readDir(directoryPath)
+		.then(function(fileNames)
+		{
+			var my_arr = [];
+			for(let i = 0; i < fileNames.length; i++)
+			{
+				my_arr.push(exports.readFile(
+					exports.resolvedPath(directoryPath, fileNames[i])));
+			}
+			return Promise.all(arr); //returns a promise
+		});
+
+	/*return new Promise(function(resolve, reject)
 	{
 		fs.readdir(directoryPath, 
 		function(err, files)
@@ -62,7 +74,7 @@ exports.readDirFiles = function(directoryPath)
 				var my_array = [];
 				for(let i = 0; i < files.length; i++)
 				{
-					fs.readFile(filePath, 'utf8',
+					fs.readFile(files[i], 'utf8',
 					function(err, data)
 					{
 						if (err)
@@ -78,5 +90,5 @@ exports.readDirFiles = function(directoryPath)
 				resolve(my_array);
 			}		
 		});
-	});
+	});*/
 }
